@@ -6,6 +6,7 @@ files:
 hooks:
   BeforeInstall:
     - location: deploy/pre-install.sh
+      timeout: 3600
       runas: root
   AfterInstall:
     - location: deploy/post-install.sh
