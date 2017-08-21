@@ -8,7 +8,7 @@ dependencies:
     - pip3 install -U pytest
     - pip3 install -r requirements.txt
     - pip3 install tensorflow
-    - sudo pip3 install keras
+#    - sudo pip3 install keras
 test:
   override:
     - pytest

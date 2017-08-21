@@ -6,7 +6,7 @@ fi
 sudo rm -rf /var/lib/apt/lists/*
 sudo apt-get clean
 
-sudo apt-get install python3-pip python3-dev
+sudo apt-get -y install python3-pip python3-dev
 pip3 install -U pytest
 pip3 install -r requirements.txt
 pip3 install eve
