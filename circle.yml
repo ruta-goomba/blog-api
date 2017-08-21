@@ -1,0 +1,28 @@
+machine:
+  python:
+    version: 3.6.2
+
+dependencies:
+  override:
+    - sudo apt-get install python3-pip python3-dev
+    - pip3 install -U pytest
+    - pip3 install -r requirements.txt
+    - pip3 install tensorflow
+    - sudo pip3 install keras
+test:
+  override:
+    - pytest
+
+deployment:
+  production:
+    branch: master
+    codedeploy:
+      BlogAppApi:
+        application_root: /
+        region: eu-west-1
+        revision_location:
+          revision_type: S3
+          s3_location:
+            bucket: rg-blog-api
+            key_pattern: blog-api-{BRANCH}-{SHORT_COMMIT}
+        deployment_group: BlogAppApiGroup

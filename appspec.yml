@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /blog-api
+hooks:
+  BeforeInstall:
+    - location: deploy/pre-install.sh
+      runas: root
+  AfterInstall:
+    - location: deploy/post-install.sh
+      timeout: 180
+  ApplicationStart:
+    - location: deploy/start-application.sh
+      timeout: 180
+  ApplicationStop:
+    - location: deploy/stop-application.sh
+      timeout: 180
+      runas: root
