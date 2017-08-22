@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ -d /blog-api ]; then
-    rm -rf /blog-api
+    sudo rm -rf /blog-api
 fi
 
 sudo rm -rf /var/lib/apt/lists/*
@@ -15,6 +15,11 @@ pip3 install -r requirements.txt
 pip3 install eve
 pip3 install tensorflow
 sudo pip3 install keras
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo rm /etc/nginx/nginx.conf
 
 if ! [ -x "$(service mongod status)" ]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6

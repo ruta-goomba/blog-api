@@ -1,3 +1,5 @@
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27017
 RESOURCE_METHODS = ['GET', 'POST']
 DOMAIN = {
   'user': {

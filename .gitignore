@@ -1,3 +1,5 @@
 .idea/
 data/db/*
 tests/__pycache__/
+data/mongod_dev.conf
+npm-debug.log

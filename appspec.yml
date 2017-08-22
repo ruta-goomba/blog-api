@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /blog-api
+  - source: nginx.conf
+    destination: /etc/nginx
 hooks:
   BeforeInstall:
     - location: deploy/pre-install.sh
