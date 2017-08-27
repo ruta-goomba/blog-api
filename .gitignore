@@ -1,7 +1,8 @@
 .idea/
 data/db/*
-tests/__pycache__/
+*/__pycache__/
 data/mongod_dev.conf
 npm-debug.log
 .DS_Store
 */.DS_Store
+nn_models/bottleneck_features/
