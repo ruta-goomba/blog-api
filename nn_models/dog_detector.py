@@ -34,8 +34,5 @@ def ResNet50_predict_labels(img_path):
 # only check if the ResNet50_predict_labels function above returns a value between 151 and 268 (inclusive).
 # returns "True" if a dog is detected in the image stored at img_path
 def dog_detector(img_path):
-    full_path = 'https://s3-eu-west-1.amazonaws.com/rg-dog-images/' + img_path
-    prediction = ResNet50_predict_labels(full_path)
+    prediction = ResNet50_predict_labels(img_path)
     return ((prediction <= 268) & (prediction >= 151))
-
-print("Dog detected: ", dog_detector('124.Poodle/Poodle_07903.jpg'))

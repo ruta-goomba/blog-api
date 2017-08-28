@@ -1,15 +1,24 @@
 import numpy as np
-from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
-from keras.layers import Dropout, Flatten, Dense
+from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D, Dropout, Flatten, Dense
 from keras.models import Sequential
 from keras.callbacks import ModelCheckpoint
 from sklearn.datasets import load_files
 from keras.utils import np_utils
-from extract_bottleneck_features import *
-from dog_detector import path_to_tensor
+from nn_models.extract_bottleneck_features import extract_Resnet50
+from nn_models.dog_detector import path_to_tensor
 from skimage import io
 from glob import glob
 import json
+import os
+
+if os.environ.get("ENV"):
+  bottleneck_features = '/Users/rutasakalauskaite/Documents/blog-api/nn_models/bottleneck_features/DogResnet50Data.npz'
+  model_weights = '/Users/rutasakalauskaite/Documents/blog-api/nn_models/saved_models/weights.best.Resnet50.hdf5'
+  dog_image_json = '/Users/rutasakalauskaite/Documents/blog-api/data/files/dog_images.json'
+else:
+  bottleneck_features = '/blog-api/nn_models/bottleneck_features/DogResnet50Data.npz'
+  model_weights = '/blog-api/nn_models/saved_models/weights.best.Resnet50.hdf5'
+  dog_image_json = '/blog-api/data/files/dog_images.json'
 
 # # define function to load datasets
 # def load_dataset(path):
@@ -21,7 +30,7 @@ import json
 # # load test datasets
 # test_files, test_targets = load_dataset('../data/files/dog_images')
 
-bottleneck_features = np.load('./bottleneck_features/DogResnet50Data.npz')
+bottleneck_features = np.load(bottleneck_features)
 train_Resnet50 = bottleneck_features['train']
 valid_Resnet50 = bottleneck_features['valid']
 test_Resnet50 = bottleneck_features['test']
@@ -45,7 +54,7 @@ Resnet50_model.compile(loss='categorical_crossentropy', optimizer='rmsprop', met
 #           epochs=20, batch_size=20, callbacks=[checkpointer], verbose=1)
 
 # Load the model weights with the best validation loss.
-Resnet50_model.load_weights('saved_models/weights.best.Resnet50.hdf5')
+Resnet50_model.load_weights(model_weights)
 
 
 # Calculate classification accuracy on the test dataset.
@@ -60,7 +69,7 @@ Resnet50_model.load_weights('saved_models/weights.best.Resnet50.hdf5')
 # load list of dog names
 def get_dog_names():
   dog_names = []
-  with open('../data/files/dog_images.json') as data_file:
+  with open(dog_image_json) as data_file:
     data = json.load(data_file)
   for entry in data:
     directory, fileName = entry.split('/')
@@ -78,13 +87,3 @@ def Resnet_predict_breed(img_path):
     predicted_vector = Resnet50_model.predict(bottleneck_feature)
     # return dog breed that is predicted by the model
     return dog_names[np.argmax(predicted_vector)]
-
-print(Resnet_predict_breed('https://s3-eu-west-1.amazonaws.com/rg-dog-images/124.Poodle/Poodle_07903.jpg'))
-
-def classify_image(img_path):
-    if(dog_detector(img_path)):
-        return { human: False, dog: True, breed: Resnet_predict_breed(img_path)}
-    elif(face_detector(img_path)):
-        return { human: True, dog: False, breed: Resnet_predict_breed(img_path)}
-    else:
-        return { human: False, dog: False, breed: ''}
