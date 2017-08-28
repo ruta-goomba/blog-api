@@ -8,8 +8,10 @@ from nn_models.dog_breed_classifier import Resnet_predict_breed
 
 if os.environ.get("ENV"):
   origins = 'http://localhost:3000'
+  port=5001
 else:
   origins = 'ec2-34-248-168-254.eu-west-1.compute.amazonaws.com'
+  port=5000
 
 app = Flask(__name__)
 CORS(app)
@@ -30,4 +32,4 @@ def dog_prediction():
       return resp
 
 if __name__ == '__main__':
-    app.run(port=5001)
+    app.run(port=port)
