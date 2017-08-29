@@ -13,9 +13,9 @@ export LC_CTYPE="en_US.UTF-8"
 pip3 install -U pytest
 pip3 install -r requirements.txt
 pip3 install flask
-pip3 install -U flask-cors
 sudo apt-get -y update
 sudo apt-get -y install nginx
+sudo apt-get -y install nginx-extras
 sudo rm /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
 sudo rm /etc/nginx/nginx.conf

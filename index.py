@@ -1,6 +1,5 @@
 import os
 from flask import Flask, request, Response, jsonify
-from flask_cors import CORS
 import json
 from nn_models.dog_detector import dog_detector
 from nn_models.human_face_detector import face_detector
@@ -14,12 +13,11 @@ else:
   port=5000
 
 app = Flask(__name__)
-CORS(app)
 
 @app.route("/dog_prediction", methods=['POST'])
 def dog_prediction():
     if request.method == 'POST':
-      data = json.loads(request.data)
+      data = json.loads(str(request.data, 'utf8'))
       img_path = 'https://s3-eu-west-1.amazonaws.com/' + data['url']
       if(dog_detector(img_path)):
           pred = { "human": 0, "dog": 1, "breed": Resnet_predict_breed(img_path)}
