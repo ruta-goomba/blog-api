@@ -9,10 +9,8 @@ from nn_models.dog_breed_classifier import Resnet_predict_breed
 
 if os.environ.get("ENV"):
   settings = 'settings_dev.py'
-  port=5001
 else:
   settings = 'settings_prod.py'
-  port=5000
 
 app = Eve(settings=settings)
 CORS(app)
@@ -33,4 +31,4 @@ def dog_prediction():
       return resp
 
 if __name__ == '__main__':
-    app.run(port=port)
+    app.run()

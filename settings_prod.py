@@ -1,4 +1,4 @@
-MONGO_HOST = 'ec2-34-251-123-3.eu-west-1.compute.amazonaws.com'
+MONGO_HOST = 'ec2-34-248-168-254.eu-west-1.compute.amazonaws.com'
 MONGO_PORT = 10047
 RESOURCE_METHODS = ['GET', 'POST']
 X_DOMAINS = '*'
