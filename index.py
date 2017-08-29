@@ -1,18 +1,21 @@
 import os
-from flask import Flask, request, Response, jsonify
+from eve import Eve
+from flask import request, jsonify
+from flask_cors import CORS
 import json
 from nn_models.dog_detector import dog_detector
 from nn_models.human_face_detector import face_detector
 from nn_models.dog_breed_classifier import Resnet_predict_breed
 
 if os.environ.get("ENV"):
-  origins = 'http://localhost:3000'
+  settings = 'settings_dev.py'
   port=5001
 else:
-  origins = 'ec2-34-248-168-254.eu-west-1.compute.amazonaws.com'
+  settings = 'settings_prod.py'
   port=5000
 
-app = Flask(__name__)
+app = Eve(settings=settings)
+CORS(app)
 
 @app.route("/dog_prediction", methods=['POST'])
 def dog_prediction():

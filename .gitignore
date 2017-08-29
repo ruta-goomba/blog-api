@@ -1,7 +1,7 @@
 .idea/
 data/db/*
 */__pycache__/
-data/mongod_dev.conf
+data/mongodb_dev.conf
 npm-debug.log
 .DS_Store
 */.DS_Store
