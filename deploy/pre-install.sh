@@ -8,10 +8,8 @@ sudo apt-get clean
 
 sudo apt-get update
 sudo apt-get -y install python3-pip python3-dev
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
+sudo locale-gen en_GB.UTF-8
 pip3 install -U pytest
-pip3 install -r requirements.txt
 pip3 install eve
 pip3 install flask
 pip3 install flask_cors

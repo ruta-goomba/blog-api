@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+cd /blog-api
+pip3 install -r requirements.txt
 cd /blog-api/data
 sudo mkdir db
 sudo chmod 777 -R db
