@@ -19,7 +19,7 @@ CORS(app)
 def dog_prediction():
     if request.method == 'POST':
       data = json.loads(str(request.data, 'utf8'))
-      img_path = 'https://s3-eu-west-1.amazonaws.com/' + data['url']
+      img_path = data['url']
       if(dog_detector(img_path)):
           pred = { "human": 0, "dog": 1, "breed": Resnet_predict_breed(img_path)}
       elif(face_detector(img_path)):
