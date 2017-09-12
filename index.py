@@ -15,7 +15,7 @@ else:
 app = Eve(settings=settings)
 CORS(app)
 
-@app.route("/dog_prediction", methods=['POST'])
+@app.route("/api/dog_prediction", methods=['POST'])
 def dog_prediction():
     if request.method == 'POST':
       data = json.loads(str(request.data, 'utf8'))
