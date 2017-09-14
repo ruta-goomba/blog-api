@@ -6,14 +6,9 @@ fi
 sudo rm -rf /var/lib/apt/lists/*
 sudo apt-get clean
 
-sudo apt-get update
+sudo apt-get -y update
 sudo apt-get -y install python3-pip python3-dev
 sudo locale-gen en_GB.UTF-8
-pip3 install -U pytest
-pip3 install eve
-pip3 install flask
-pip3 install flask_cors
-sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo apt-get -y install nginx-extras
 sudo rm /etc/nginx/sites-available/default

@@ -9,7 +9,7 @@ dependencies:
 
 test:
   override:
-    - pytest
+    - python3 flask_tests.py
 
 deployment:
   production:

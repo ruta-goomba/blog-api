@@ -1,5 +1,6 @@
 .idea/
 data/db/*
+__pycache__/
 */__pycache__/
 data/mongodb_dev.conf
 npm-debug.log

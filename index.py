@@ -1,6 +1,6 @@
 import os
 from eve import Eve
-from flask import request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 from nn_models.dog_detector import dog_detector
