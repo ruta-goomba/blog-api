@@ -9,7 +9,6 @@ hooks:
   BeforeInstall:
     - location: deploy/pre-install.sh
       timeout: 3600
-      runas: root
   AfterInstall:
     - location: deploy/post-install.sh
       timeout: 180
@@ -19,4 +18,3 @@ hooks:
   ApplicationStop:
     - location: deploy/stop-application.sh
       timeout: 180
-      runas: root

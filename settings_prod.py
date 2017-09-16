@@ -1,27 +1,25 @@
-MONGO_HOST = 'ec2-52-50-140-88.eu-west-1.compute.amazonaws.com'
+MONGO_HOST = 'ruta-sakalauskaite.me'
 MONGO_PORT = 10047
 RESOURCE_METHODS = ['GET', 'POST']
 X_DOMAINS = '*'
-X_HEADERS = ['User-Agent', 'Host', 'Content-Type']
+X_HEADERS = ['User', 'Content-Type']
 DOMAIN = {
-  'user': {
+  'api/comment': {
     'schema': {
-      'firstname': {
-        'type': 'string'
-      },
-      'lastname': {
-        'type': 'string'
-      },
       'username': {
           'type': 'string',
            'unique': True
       },
-      'password': {
+      'comment': {
           'type': 'string'
       },
-      'phone': {
-          'type': 'string'
-      }
+      'id': {
+          'type': 'integer',
+          'unique': True
+      },
+      'date': {
+          'type': 'datetime'
+      },
         }
     },
   'additional_lookup': {

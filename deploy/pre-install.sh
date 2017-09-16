@@ -3,8 +3,9 @@ if [ -d /blog-api ]; then
     sudo rm -rf /blog-api
 fi
 
-sudo rm -rf /var/lib/apt/lists/*
-sudo apt-get clean
+if ! [ -d /home/ubuntu/db ]; then
+  cd /home/ubuntu && sudo mkdir db && sudo chmod 777 -R db
+fi
 
 sudo apt-get -y update
 sudo apt-get -y install python3-pip python3-dev

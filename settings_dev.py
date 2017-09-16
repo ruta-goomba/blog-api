@@ -1,25 +1,24 @@
 MONGO_HOST = 'localhost'
 MONGO_PORT = 27017
 RESOURCE_METHODS = ['GET', 'POST']
+ITEM_METHODS = ['GET', 'PUT']
 DOMAIN = {
-  'user': {
+  'api/comment': {
     'schema': {
-      'firstname': {
-        'type': 'string'
-      },
-      'lastname': {
-        'type': 'string'
-      },
       'username': {
           'type': 'string',
            'unique': True
       },
-      'password': {
+      'comment': {
           'type': 'string'
       },
-      'phone': {
-          'type': 'string'
-      }
+      'id': {
+          'type': 'integer',
+          'unique': True
+      },
+      'date': {
+          'type': 'datetime'
+      },
         }
     },
   'additional_lookup': {
