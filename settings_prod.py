@@ -1,6 +1,7 @@
-MONGO_HOST = 'ruta-sakalauskaite.me'
+MONGO_HOST = 'localhost'
 MONGO_PORT = 10047
 RESOURCE_METHODS = ['GET', 'POST']
+ITEM_METHODS = ['GET', 'PUT']
 X_DOMAINS = '*'
 X_HEADERS = ['User', 'Content-Type']
 DOMAIN = {
