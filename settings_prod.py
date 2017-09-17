@@ -8,7 +8,7 @@ DOMAIN = {
   'api/comment': {
     'schema': {
       'username': {
-          'type': 'string',
+          'type': 'string'
       },
       'comment': {
           'type': 'string'
@@ -16,9 +16,12 @@ DOMAIN = {
       'topic': {
           'type': 'string'
       },
-      'date': {
-          'type': 'datetime'
+      'created': {
+          'type': 'string'
       },
+      'show': {
+          'type': 'boolean'
+      }
     }
   }
 }
